@@ -22,7 +22,7 @@ const AgoraClient = () => {
     const videoContainerRef = useRef<HTMLDivElement | null>(null); // 👈 New ref for video container
     const uid = generateUid();
 
-    const [converterId, setConverterId] = useState('');
+    //const [converterId, setConverterId] = useState('');
     const [joined, setJoined] = useState(false);
 
     const localAudioTrackRef = useRef<IMicrophoneAudioTrack | null>(null);
@@ -67,25 +67,25 @@ const AgoraClient = () => {
     }, []);
 
 
-    const startYoutubeStream = async () => {
-        const response = await fetch('http://localhost:5000/orchestrate/start-youtube-stream', {
-            method: 'POST'
-        });
+    // const startYoutubeStream = async () => {
+    //     const response = await fetch('http://localhost:5000/orchestrate/start-youtube-stream', {
+    //         method: 'POST'
+    //     });
 
-        const data = await response.json();
-        setConverterId(data.converterId);
-    };
+    //     const data = await response.json();
+    //     setConverterId(data.converterId);
+    // };
 
-    const stopRtmpPush = async (converterId: string) => {
-        await fetch('http://localhost:5000/stop-rtmp', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ converterId })
-        });
-        console.log('RTMP push stopped');
-    };
+    // const stopRtmpPush = async (converterId: string) => {
+    //     await fetch('http://localhost:5000/stop-rtmp', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ converterId })
+    //     });
+    //     console.log('RTMP push stopped');
+    // };
 
     const joinChannel = async (role: Role) => {
         try {
